@@ -1,12 +1,11 @@
-package com.yeefom.aop;
+package com.yeefom.aop.dao;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class AccountDao {
+public class MembershipDao {
 
     public void addAccount() {
         System.out.println(getClass() + ": add account");
     }
-
 }
