@@ -8,16 +8,19 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class AopExpressions {
 
-    @Pointcut("execution(* com.yeefom.aop.dao.*.add*(..))")
-    public void daoAdds() {}
+    @Pointcut("execution(* com.yeefom.aop.dao.*.*(..))")
+    public void dao() {}
 
     @Pointcut("execution(* get*(..))")
-    public void getters() {}
+    public void getter() {}
 
     @Pointcut("execution(* set*(..))")
-    public void setters() {}
+    public void setter() {}
 
     @Pointcut("execution(public void addAccount())")
     public void addAccount() {}
+
+    @Pointcut("execution(String get*())")
+    public void stringGetter() {}
 
 }

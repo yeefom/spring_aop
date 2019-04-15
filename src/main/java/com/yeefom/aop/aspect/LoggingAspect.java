@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Order(2)
 public class LoggingAspect {
 
-    @Before("com.yeefom.aop.aspect.AopExpressions.daoAdds() && " +
-            "!(com.yeefom.aop.aspect.AopExpressions.getters() || " +
-            "com.yeefom.aop.aspect.AopExpressions.setters())")
-    public void beforeDaoAddsExceptForGettersAndSetters() {
-        System.out.println("@Before advice: dao add");
+    @Before("com.yeefom.aop.aspect.AopExpressions.dao() && " +
+            "!(com.yeefom.aop.aspect.AopExpressions.getter() || " +
+            "com.yeefom.aop.aspect.AopExpressions.setter())")
+    public void beforeDaoExceptForGettersAndSetters() {
+        System.out.println("@Before dao");
     }
 
 }
