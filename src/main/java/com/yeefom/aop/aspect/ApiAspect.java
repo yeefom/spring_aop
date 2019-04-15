@@ -1,7 +1,9 @@
 package com.yeefom.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -33,4 +35,16 @@ public class ApiAspect {
         System.out.println("@AfterReturning string getter - method: " + joinPoint.getSignature() + "; result: " + result);
     }
 
+    @Around("com.yeefom.aop.aspect.AopExpressions.setter()")
+    public Object aroundSetter(ProceedingJoinPoint joinPoint) throws Throwable {
+        long begin = System.currentTimeMillis();
+
+        Object res = joinPoint.proceed();
+
+        long end = System.currentTimeMillis();
+
+        System.out.println("@Around setter - duration: " + (end - begin));
+
+        return res;
+    }
 }
