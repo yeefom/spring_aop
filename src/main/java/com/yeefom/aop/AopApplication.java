@@ -14,6 +14,8 @@ public class AopApplication {
         MembershipDao membershipDao = context.getBean("membershipDao", MembershipDao.class);
 
         accountDao.addAccount();
+        accountDao.setName("dao name");
+        accountDao.getName();
         membershipDao.addAccount();
 
         context.close();
