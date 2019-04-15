@@ -12,6 +12,7 @@
         <maven.compiler.target>12</maven.compiler.target>
         <maven.compiler.source>12</maven.compiler.source>
         <spring.version>5.1.6.RELEASE</spring.version>
+        <aspectj.version>1.9.3</aspectj.version>
     </properties>
 
     <dependencies>
@@ -42,13 +43,13 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.3</version>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.3</version>
+            <version>${aspectj.version}</version>
         </dependency>
     </dependencies>
 
