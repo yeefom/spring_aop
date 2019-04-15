@@ -3,29 +3,19 @@ package com.yeefom.aop.aspect;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
+@Order(2)
 public class LoggingAspect {
 
-    @Pointcut("execution(* com.yeefom.aop.dao.*.add*(..))")
-    public void daoAdds() {}
-
-    @Pointcut("execution(* get*(..))")
-    public void getters() {}
-
-    @Pointcut("execution(* set*(..))")
-    public void setters() {}
-
-    @Before("daoAdds() && !(getters() || setters())")
+    @Before("com.yeefom.aop.aspect.AopExpressions.daoAdds() && " +
+            "!(com.yeefom.aop.aspect.AopExpressions.getters() || " +
+            "com.yeefom.aop.aspect.AopExpressions.setters())")
     public void beforeDaoAddsExceptForGettersAndSetters() {
         System.out.println("@Before advice: dao add");
     }
-
-//    @Before("execution(public void addAccount())")
-//    public void beforeAddAccount() {
-//        System.out.println("@Before advice: add account");
-//    }
 
 }
